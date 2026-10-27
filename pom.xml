@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>cctv-service</artifactId>
+    <artifactId>cctv-service-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cctv-service</name>
     <description>cctv-service</description>
@@ -137,6 +137,49 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <!-- 1. Plugin that loads properties from the application.properties file -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${project.basedir}/src/main/resources/application.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 2. Liquibase Maven Plugin -->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
+                <configuration>
+                    <!-- Mapping values from application.properties -->
+                    <driver>${spring.datasource.driver-class-name}</driver>
+                    <url>${spring.datasource.url}</url>
+                    <username>${spring.datasource.username}</username>
+                    <password>${spring.datasource.password}</password>
+
+                    <!-- Location main file changelog -->
+                    <changeLogFile>${project.basedir}/src/main/resources/db/changelog/db.changelog.yaml</changeLogFile>
+                </configuration>
+                <dependencies>
+                    <!-- Driver database -->
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${postgresql.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the users table using an external SQL file"
+        - sqlFile:
+            path: 01-create-table-users.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 2
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the roles table using an external SQL file"
+        - sqlFile:
+            path: 02-create-table-roles.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 3
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the user_roles table using an external SQL file"
+        - sqlFile:
+            path: 03-create-table-user_roles.sql
+            relativeToChangelogFile: true

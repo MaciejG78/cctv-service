@@ -1,0 +1,6 @@
+# https://docs.liquibase.com/secure/set-up-secure-automation-6-0/structure-your-changelog/organize-changes-by-release
+
+databaseChangeLog:
+  - include:
+      file: db/changelog/1.0/changelog-1.0.yaml
+      relativeToChangelogFile: false
