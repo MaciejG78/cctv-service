@@ -2,80 +2,80 @@ databaseChangeLog:
   - changeSet:
       id: 1
       author: maciej.goleb
+      comment: "Initializing the extension for citext for email field case-sensitiveness"
       changes:
-        - comment: "Initializing the extension for citext for email field case-sensitiveness"
         - sqlFile:
             path: 01-create-extension.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 2
       author: maciej.goleb
+      comment: "Initializing the users table using an external SQL file"
       changes:
-        - comment: "Initializing the users table using an external SQL file"
         - sqlFile:
             path: 02-create-table-users.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 3
       author: maciej.goleb
+      comment: "Initializing the roles table using an external SQL file"
       changes:
-        - comment: "Initializing the roles table using an external SQL file"
         - sqlFile:
             path: 03-create-table-roles.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 4
       author: maciej.goleb
+      comment: "Initializing the user_roles table using an external SQL file"
       changes:
-        - comment: "Initializing the user_roles table using an external SQL file"
         - sqlFile:
             path: 04-create-table-user_roles.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 5
       author: maciej.goleb
+      comment: "Initializing the companies table using an external SQL file"
       changes:
-        - comment: "Initializing the companies table using an external SQL file"
         - sqlFile:
             path: 05-create-table-companies.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 6
       author: maciej.goleb
+      comment: "Initializing the locations table using an external SQL file"
       changes:
-        - comment: "Initializing the locations table using an external SQL file"
         - sqlFile:
             path: 06-create-table-locations.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 7
       author: maciej.goleb
+      comment: "Initializing the manufacturers table using an external SQL file"
       changes:
-        - comment: "Initializing the manufacturers table using an external SQL file"
         - sqlFile:
             path: 07-create-table-manufacturers.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 8
       author: maciej.goleb
+      comment: "Initializing the equipment_dictionary table using an external SQL file"
       changes:
-        - comment: "Initializing the equipment dictionary table using an external SQL file"
         - sqlFile:
             path: 08-create-table-equipment_dictionary.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 9
       author: maciej.goleb
+      comment: "Initializing the equipment table using an external SQL file"
       changes:
-        - comment: "Initializing the equipment table using an external SQL file"
         - sqlFile:
             path: 09-create-table-equipment.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 10
       author: maciej.goleb
+      comment: "Initializing the service table using an external SQL file"
       changes:
-        - comment: "Initializing the service table using an external SQL file"
         - sqlFile:
             path: 10-create-table-service.sql
             relativeToChangelogFile: true
