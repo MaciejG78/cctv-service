@@ -1,9 +1,11 @@
+-- USERS - application users
+
 CREATE TABLE users
 (
     id                       BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     company_id               BIGINT,      -- FK added after companies is created
     login                    varchar(100) NOT NULL UNIQUE,
-    email                    varchar(100) NOT NULL UNIQUE,
+    email                    citext       NOT NULL UNIQUE,
     password_hash            VARCHAR(255) NOT NULL,
     first_name               VARCHAR(100) NOT NULL,
     last_name                VARCHAR(100) NOT NULL,

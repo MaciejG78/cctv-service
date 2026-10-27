@@ -24,3 +24,10 @@ http://localhost:8080/actuator/health
 ### Profiles
 java -jar myapp.jar --spring.profiles.active=dev
 https://www.geeksforgeeks.org/advance-java/spring-boot-managing-application-properties-with-profiles/
+
+### JPA
+https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html
+https://www.baeldung.com/rest-api-search-language-spring-data-specifications
+https://spring.io/guides/gs/accessing-data-jpa
+https://levelup.gitconnected.com/6-best-hibernate-and-spring-data-jpa-courses-for-experienced-java-developers-in-2023-f9df441fd035
+https://spring.io/projects/spring-data-jpa#samples
