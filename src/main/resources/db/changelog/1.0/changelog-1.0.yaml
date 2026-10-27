@@ -47,3 +47,35 @@ databaseChangeLog:
         - sqlFile:
             path: 06-create-table-locations.sql
             relativeToChangelogFile: true
+  - changeSet:
+      id: 7
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the manufacturers table using an external SQL file"
+        - sqlFile:
+            path: 07-create-table-manufacturers.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 8
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the equipment dictionary table using an external SQL file"
+        - sqlFile:
+            path: 08-create-table-equipment_dictionary.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 9
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the equipment table using an external SQL file"
+        - sqlFile:
+            path: 09-create-table-equipment.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 10
+      author: maciej.goleb
+      changes:
+        - comment: "Initializing the service table using an external SQL file"
+        - sqlFile:
+            path: 10-create-table-service.sql
+            relativeToChangelogFile: true

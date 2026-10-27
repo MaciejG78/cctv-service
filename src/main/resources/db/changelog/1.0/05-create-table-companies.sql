@@ -16,10 +16,14 @@ CREATE TABLE companies
     is_active    BOOLEAN      NOT NULL DEFAULT TRUE,
     -- audit
     created_at   TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by   BIGINT       REFERENCES users (id) ON DELETE SET NULL,
+    created_by   BIGINT REFERENCES users (id) ON DELETE RESTRICT,
     updated_at   TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by   BIGINT       REFERENCES users (id) ON DELETE SET NULL
+    updated_by   BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    is_deleted   BOOLEAN      NOT NULL DEFAULT FALSE,
+    deleted_at   TIMESTAMPTZ,
+    deleted_by   BIGINT REFERENCES users (id) ON DELETE RESTRICT
 );
+
 CREATE UNIQUE INDEX uq_companies_tax_id ON companies (tax_id) WHERE tax_id IS NOT NULL;
 
 ALTER TABLE users

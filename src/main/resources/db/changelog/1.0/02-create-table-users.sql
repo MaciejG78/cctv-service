@@ -18,9 +18,12 @@ CREATE TABLE users
     last_login_at            TIMESTAMPTZ,
     -- audit
     created_at               TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by               BIGINT       REFERENCES users (id) ON DELETE SET NULL,
+    created_by               BIGINT REFERENCES users (id) ON DELETE RESTRICT,
     updated_at               TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by               BIGINT       REFERENCES users (id) ON DELETE SET NULL,
+    updated_by               BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    is_deleted               BOOLEAN      NOT NULL DEFAULT FALSE,
+    deleted_at               TIMESTAMPTZ,
+    deleted_by               BIGINT REFERENCES users (id) ON DELETE RESTRICT,
     CONSTRAINT chk_users_contact_method
         CHECK (preferred_contact_method IN ('MOBILE', 'SMS', 'EMAIL', 'PHONE', 'POST')),
     CONSTRAINT chk_users_contact_data CHECK (
