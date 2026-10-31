@@ -1,4 +1,4 @@
--- USERS - application users
+-- users - application users
 
 CREATE TABLE users
 (
@@ -16,14 +16,15 @@ CREATE TABLE users
     language_code            VARCHAR(5)   NOT NULL DEFAULT 'pl',
     is_active                BOOLEAN      NOT NULL DEFAULT TRUE,
     last_login_at            TIMESTAMPTZ,
+    deactivated_at           TIMESTAMPTZ,
     -- audit
     created_at               TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by               BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    created_by               varchar(100),
     updated_at               TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by               BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    updated_by               varchar(100),
     is_deleted               BOOLEAN      NOT NULL DEFAULT FALSE,
     deleted_at               TIMESTAMPTZ,
-    deleted_by               BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    deleted_by               varchar(100),
     CONSTRAINT chk_users_contact_method
         CHECK (preferred_contact_method IN ('MOBILE', 'SMS', 'EMAIL', 'PHONE', 'POST')),
     CONSTRAINT chk_users_contact_data CHECK (

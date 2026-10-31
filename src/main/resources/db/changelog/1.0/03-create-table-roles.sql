@@ -1,4 +1,5 @@
--- Roles dictionary (mirrors enum Role in code: CLIENT, ADMIN, TECHNICIAN)
+-- roles dictionary (mirrors enum Role in code: CLIENT, ADMIN, TECHNICIAN)
+
 CREATE TABLE roles
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -7,11 +8,10 @@ CREATE TABLE roles
     description VARCHAR(500),
     -- audit
     created_at  TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by  BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    created_by  varchar(100),
     updated_at  TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by  BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    updated_by  varchar(100),
     is_deleted  BOOLEAN      NOT NULL DEFAULT FALSE,
     deleted_at  TIMESTAMPTZ,
-    deleted_by  BIGINT REFERENCES users (id) ON DELETE RESTRICT,
-    CONSTRAINT chk_roles_code CHECK (code IN ('CLIENT', 'ADMIN', 'TECHNICIAN'))
+    deleted_by  varchar(100)
 );

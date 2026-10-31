@@ -1,4 +1,4 @@
--- SERVICES (service requests / tickets)
+-- services (service requests / tickets)
 
 CREATE SEQUENCE service_number_seq;
 
@@ -26,15 +26,14 @@ CREATE TABLE services
     cancellation_reason    VARCHAR(1000),
     -- audit
     created_at             TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by             BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    created_by             varchar(100),
     updated_at             TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by             BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    updated_by             varchar(100),
     is_deleted             BOOLEAN      NOT NULL DEFAULT FALSE,
     deleted_at             TIMESTAMPTZ,
-    deleted_by             BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    deleted_by             varchar(100),
     CONSTRAINT chk_services_status CHECK (status IN
-                                          ('NEW', 'ACCEPTED', 'UNDER_VERIFICATION', 'UNDER_REPAIR', 'RESOLVED',
-                                           'CANCELLED')),
+                                          ('NEW', 'ACCEPTED', 'UNDER_VERIFICATION', 'UNDER_REPAIR', 'RESOLVED', 'CANCELLED')),
     CONSTRAINT chk_services_type CHECK (service_type IN
                                         ('REPAIR', 'MAINTENANCE', 'INSTALLATION', 'INSPECTION')),
     CONSTRAINT chk_services_priority CHECK (priority IN
@@ -42,6 +41,7 @@ CREATE TABLE services
     CONSTRAINT chk_services_resolved CHECK (status <> 'RESOLVED' OR resolved_at IS NOT NULL),
     CONSTRAINT chk_services_cancelled CHECK (status <> 'CANCELLED' OR cancelled_at IS NOT NULL)
 );
+
 CREATE INDEX idx_services_company ON services (company_id);
 CREATE INDEX idx_services_location ON services (location_id);
 CREATE INDEX idx_services_requester ON services (requester_id);

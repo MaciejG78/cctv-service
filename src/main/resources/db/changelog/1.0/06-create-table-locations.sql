@@ -1,4 +1,4 @@
--- LOCATIONS (with geolocation for map display)
+-- locations (with geolocation for map display)
 -- If we upgrade Postgres with PostGIS we can use geometry type -> geometry(Point, 4326) + GIST index for radius query
 
 CREATE TABLE locations
@@ -20,13 +20,14 @@ CREATE TABLE locations
     contact_phone      VARCHAR(30),
     access_notes       VARCHAR(1000),
     is_active          BOOLEAN      NOT NULL DEFAULT TRUE,
+    -- audit
     created_at         TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by         BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    created_by         varchar(100),
     updated_at         TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by         BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    updated_by         varchar(100),
     is_deleted         BOOLEAN      NOT NULL DEFAULT FALSE,
     deleted_at         TIMESTAMPTZ,
-    deleted_by         BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    deleted_by         varchar(100),
     CONSTRAINT chk_locations_lat CHECK (latitude IS NULL OR latitude BETWEEN -90 AND 90),
     CONSTRAINT chk_locations_lon CHECK (longitude IS NULL OR longitude BETWEEN -180 AND 180),
     CONSTRAINT chk_locations_latlon CHECK ((latitude IS NULL) = (longitude IS NULL)),

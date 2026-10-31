@@ -1,4 +1,4 @@
--- MANUFACTURESRS for equipment
+-- manufacturers for equipment
 
 CREATE TABLE manufacturers
 (
@@ -9,10 +9,10 @@ CREATE TABLE manufacturers
     support_phone VARCHAR(30),
     -- audit
     created_at    TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    created_by    BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    created_by    varchar(100),
     updated_at    TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_by    BIGINT REFERENCES users (id) ON DELETE RESTRICT,
+    updated_by    varchar(100),
     is_deleted    BOOLEAN      NOT NULL DEFAULT FALSE,
     deleted_at    TIMESTAMPTZ,
-    deleted_by    BIGINT REFERENCES users (id) ON DELETE RESTRICT
+    deleted_by    varchar(100)
 );

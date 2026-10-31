@@ -10,7 +10,7 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: maciej.goleb
-      comment: "Initializing the users table using an external SQL file"
+      comment: "Initializing the users table model"
       changes:
         - sqlFile:
             path: 02-create-table-users.sql
@@ -18,7 +18,7 @@ databaseChangeLog:
   - changeSet:
       id: 3
       author: maciej.goleb
-      comment: "Initializing the roles table using an external SQL file"
+      comment: "Initializing the roles table model"
       changes:
         - sqlFile:
             path: 03-create-table-roles.sql
@@ -26,7 +26,7 @@ databaseChangeLog:
   - changeSet:
       id: 4
       author: maciej.goleb
-      comment: "Initializing the user_roles table using an external SQL file"
+      comment: "Initializing the user_roles table model"
       changes:
         - sqlFile:
             path: 04-create-table-user_roles.sql
@@ -34,7 +34,7 @@ databaseChangeLog:
   - changeSet:
       id: 5
       author: maciej.goleb
-      comment: "Initializing the companies table using an external SQL file"
+      comment: "Initializing the companies table model"
       changes:
         - sqlFile:
             path: 05-create-table-companies.sql
@@ -42,7 +42,7 @@ databaseChangeLog:
   - changeSet:
       id: 6
       author: maciej.goleb
-      comment: "Initializing the locations table using an external SQL file"
+      comment: "Initializing the locations table model"
       changes:
         - sqlFile:
             path: 06-create-table-locations.sql
@@ -50,7 +50,7 @@ databaseChangeLog:
   - changeSet:
       id: 7
       author: maciej.goleb
-      comment: "Initializing the manufacturers table using an external SQL file"
+      comment: "Initializing the manufacturers table model"
       changes:
         - sqlFile:
             path: 07-create-table-manufacturers.sql
@@ -58,7 +58,7 @@ databaseChangeLog:
   - changeSet:
       id: 8
       author: maciej.goleb
-      comment: "Initializing the equipment_dictionary table using an external SQL file"
+      comment: "Initializing the equipment_dictionary table model"
       changes:
         - sqlFile:
             path: 08-create-table-equipment_dictionary.sql
@@ -66,7 +66,7 @@ databaseChangeLog:
   - changeSet:
       id: 9
       author: maciej.goleb
-      comment: "Initializing the equipment table using an external SQL file"
+      comment: "Initializing the equipment table model"
       changes:
         - sqlFile:
             path: 09-create-table-equipment.sql
@@ -74,8 +74,73 @@ databaseChangeLog:
   - changeSet:
       id: 10
       author: maciej.goleb
-      comment: "Initializing the service table using an external SQL file"
+      comment: "Initializing the service table model"
       changes:
         - sqlFile:
             path: 10-create-table-service.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 11
+      author: maciej.goleb
+      comment: "Initializing the service_equipment model"
+      changes:
+        - sqlFile:
+            path: 11-create-table-service_equipment.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 12
+      author: maciej.goleb
+      comment: "Initializing the service_status_history table model"
+      changes:
+        - sqlFile:
+            path: 12-create-table-service_status_history.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 13
+      author: maciej.goleb
+      comment: "Initializing the service_comments table model"
+      changes:
+        - sqlFile:
+            path: 13-create-table-service_comments.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 14
+      author: maciej.goleb
+      comment: "Initializing the service_parts table model"
+      changes:
+        - sqlFile:
+            path: 14-create-table-service_parts.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 15
+      author: maciej.goleb
+      comment: "Initializing the attachments table model"
+      changes:
+        - sqlFile:
+            path: 15-create-table-attachments.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 16
+      author: maciej.goleb
+      comment: "Initializing the notifications table model"
+      changes:
+        - sqlFile:
+            path: 16-create-table-notifications.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 17
+      author: maciej.goleb
+      comment: "Creating audit trigger for field created_by, created_at, updated_by, updated_at"
+      changes:
+        - sqlFile:
+            path: 17-create-audit-trigger-created_by-updated_by.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+  - changeSet:
+      id: 18
+      author: maciej.goleb
+      comment: "Inserting data into table roles"
+      changes:
+        - sqlFile:
+            path: 18-insert-into-roles.sql
             relativeToChangelogFile: true
